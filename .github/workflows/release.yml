@@ -18,3 +18,4 @@ jobs:
       - uses: ./
         with:
           version: ${{ github.event.inputs.version }}
+          auth_token: ${{ secrets.NPM_PUBLISH_TOKEN }}
