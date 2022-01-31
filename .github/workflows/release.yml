@@ -32,9 +32,6 @@ jobs:
       - name: Tag new release
         run: yarn version --${{ github.event.inputs.version }}
 
-      - name: Bump dev version
-        run: yarn version --prerelease --preid dev
-
       - run: git checkout main
 
       - name: Merge release branch
