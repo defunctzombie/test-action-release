@@ -27,7 +27,7 @@ jobs:
           git config user.email "john.doe@example.com"
 
       - name: Make release branch
-        run: git checkoub -b release
+        run: git checkout -b release
 
       - name: Tag new release
         run: yarn version --${{ github.event.inputs.version }}
