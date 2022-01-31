@@ -15,32 +15,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - uses: actions/setup-node@v2
+      - uses: ./action.yml
         with:
-          node-version: 16
-          registry-url: https://registry.npmjs.org
-          cache: yarn
-
-      - name: Configure git
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-
-      - name: Make release branch
-        run: git checkout -b release
-
-      - name: Tag new release
-        run: yarn version --${{ github.event.inputs.version }}
-
-      - run: git checkout main
-
-      - name: Merge release branch
-        run: git merge --ff-only release
-
-      - run: git push
-      - run: git push --tags
-
-      - name: Publish to NPM
-        run: yarn publish --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
+          version: ${{ github.event.inputs.version }}
