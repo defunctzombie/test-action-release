@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       version:
-        description: "Version to increment"
+        description: "Version (major | minor | patch)"
         required: true
         default: "minor"
 
@@ -33,3 +33,6 @@ jobs:
 
       - name: push tags
         run: git push --tags
+
+      - name: bump dev
+        run: yarn version --prerelease --preid dev
