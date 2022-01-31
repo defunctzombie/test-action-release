@@ -25,14 +25,16 @@ jobs:
           git config user.name "John Doe"
           git config user.email "john.doe@example.com"
 
-      - name: bump version
+      - name: Make release branch
+        run: git checkoub -b release
+
+      - name: Tag new release
         run: yarn version --${{ github.event.inputs.version }}
 
-      - name: push
-        run: git push
-
-      - name: push tags
-        run: git push --tags
-
-      - name: bump dev
+      - name: Bump dev version
         run: yarn version --prerelease --preid dev
+
+      - name: Merge release branch
+
+      - run: git push
+      - run: git push --tags
