@@ -41,6 +41,8 @@ runs:
       shell: bash
 
     - run: git push
+      shell: bash
+
     - run: git push --tags
       shell: bash
 
