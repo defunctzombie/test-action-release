@@ -18,6 +18,11 @@ jobs:
           registry-url: https://registry.npmjs.org
           cache: yarn
 
+      - name: Configure git
+        run: |
+          git config user.name "John Doe"
+          git config user.email "john.doe@example.com"
+
       - name: bump version
         run: yarn version --${{ github.event.inputs.version }}
 
