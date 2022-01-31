@@ -38,7 +38,7 @@ jobs:
       - run: git checkout main
 
       - name: Merge release branch
-        run: git merge --fast-forward release
+        run: git merge --ff-only release
 
       - run: git push
       - run: git push --tags
