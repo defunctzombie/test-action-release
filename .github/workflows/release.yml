@@ -19,7 +19,7 @@ jobs:
           cache: yarn
 
       - name: bump version
-        run: yarn version --${{ github.event.inputs.version }}"
+        run: yarn version --${{ github.event.inputs.version }}
 
       - name: push
         run: git push
