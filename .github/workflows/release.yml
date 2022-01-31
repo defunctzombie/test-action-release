@@ -11,6 +11,7 @@ on:
 jobs:
   release:
     runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
     steps:
       - uses: actions/checkout@v2
 
@@ -34,7 +35,10 @@ jobs:
       - name: Bump dev version
         run: yarn version --prerelease --preid dev
 
+      - run: git checkout main
+
       - name: Merge release branch
+        run: git merge --fast-forward release
 
       - run: git push
       - run: git push --tags
