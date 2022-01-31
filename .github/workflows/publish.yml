@@ -2,11 +2,11 @@ name: Publish
 
 on:
   push:
+    branches: main
     tags: v*
 
 jobs:
   all:
-    name: all
     runs-on: ubuntu-latest
     steps:
       - name: Publish to NPM
